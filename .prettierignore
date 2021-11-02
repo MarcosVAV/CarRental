@@ -1,0 +1,5 @@
+vendor
+.docker/database
+reports
+storage
+node_module
