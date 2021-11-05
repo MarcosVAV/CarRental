@@ -2,8 +2,10 @@
 
 @if ($navbarItemHelper->isSearch($item))
 
+    @if (!route('home'))
     {{-- Search form --}}
     @include('adminlte::partials.navbar.menu-item-search-form')
+    @endif
 
 @elseif ($navbarItemHelper->isNotification($item))
 
