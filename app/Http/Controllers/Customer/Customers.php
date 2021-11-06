@@ -3,42 +3,51 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreCostumerRequest;
+use App\Http\Requests\UpdateCostumerRequest;
+use App\Models\Costumer;
 
 class Customers extends Controller
 {
     public function index()
     {
-        //
+        return view('Pages.Costumer.CostumersIndex');
     }
 
     public function create()
     {
-        //
+        return view('Pages.Costumer.CostumersCreateAndEdit');
     }
 
-    public function store(Request $request)
+    public function store(StoreCostumerRequest $request)
     {
-        //
+        Costumer::create($request->validated());
+
+        return redirect()
+            ->route('customers.index')
+            ->with(['success', 'Cliente cadastrado!']);
     }
 
-    public function show($id)
+    public function edit(Costumer $costumer)
     {
-        //
+        return view('Pages.Costumer.CostumersCreateAndEdit', compact('costumer'));
     }
 
-    public function edit($id)
+    public function update(UpdateCostumerRequest $request, Costumer $costumer)
     {
-        //
+        $costumer->update($request->validated());
+
+        return redirect()
+            ->route('customers.index')
+            ->with(['success', 'Cliente atualizado!']);
     }
 
-    public function update(Request $request, $id)
+    public function destroy(Costumer $costumer)
     {
-        //
-    }
+        $costumer->delete();
 
-    public function destroy($id)
-    {
-        //
+        return response()->json([
+            'message' => 'Cliente excluído com sucesso!'
+        ]);
     }
 }

@@ -247,7 +247,7 @@ return [
         ],
         ['header' => 'Menu de Navegação'],
         [
-            'text' => 'Cliente',
+            'text' => 'Clientes',
             'url' => 'customers',
             'icon' => 'far fa-user',
         ],
