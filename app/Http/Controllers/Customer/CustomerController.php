@@ -11,7 +11,9 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('Pages.Customer.CustomersIndex');
+        $customers = Customer::all();
+
+        return view('Pages.Customer.CustomersIndex', compact('customers'));
     }
 
     public function create()
@@ -28,26 +30,26 @@ class CustomerController extends Controller
             ->with(['success', 'Cliente cadastrado!']);
     }
 
-    public function edit(Customer $Customer)
+    public function edit(Customer $customer)
     {
-        return view('Pages.Customer.CustomersCreateAndEdit', compact('Customer'));
+        return view('Pages.Customer.CustomersCreateAndEdit', compact('customer'));
     }
 
-    public function update(UpdateCustomerRequest $request, Customer $Customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        $Customer->update($request->validated());
+        $customer->update($request->validated());
 
         return redirect()
             ->route('customers.index')
             ->with(['success', 'Cliente atualizado!']);
     }
 
-    public function destroy(Customer $Customer)
+    public function destroy(Customer $customer)
     {
-        $Customer->delete();
+        $customer->delete();
 
-        return response()->json([
-            'message' => 'Cliente excluído com sucesso!'
-        ]);
+        return redirect()
+            ->route('customers.index')
+            ->with(['success', 'Cliente excluído!']);
     }
 }
