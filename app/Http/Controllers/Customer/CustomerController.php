@@ -13,12 +13,12 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
 
-        return view('Pages.Customer.CustomersIndex', compact('customers'));
+        return view('Pages.Customer.index', compact('customers'));
     }
 
     public function create()
     {
-        return view('Pages.Customer.CustomersCreateAndEdit');
+        return view('Pages.Customer.create-edit');
     }
 
     public function store(StoreCustomerRequest $request)
@@ -32,7 +32,7 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer)
     {
-        return view('Pages.Customer.CustomersCreateAndEdit', compact('customer'));
+        return view('Pages.Customer.create-edit', compact('customer'));
     }
 
     public function update(UpdateCustomerRequest $request, Customer $customer)

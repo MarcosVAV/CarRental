@@ -252,8 +252,8 @@ return [
             'icon' => 'far fa-user',
         ],
         [
-            'text' => 'Carro',
-            'url' => 'cars',
+            'text' => 'Veículos',
+            'url' => 'vehicles',
             'icon' => 'fas fa-car',
         ],
         [
