@@ -16,12 +16,13 @@
 {{-- @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop --}}
 
 @section('body')
-    <div class="col-md-12"
-    style="display: inline-flex; position: fixed; top: 0; left: 0; bottom: 0; right: 0; overflow: auto;">
-        <div class="col-md-6" style="text-align: -webkit-right; align-self: center; padding-right: 2%;">
-            <img src="{{ URL::asset('/images/logo/logo.jpeg') }}" alt="profile Pic" height="500" width="500">
+    <div style="display: inline-flex; position: fixed; top: 0; left: 0; bottom: 0; right: 0; overflow: auto;">
+        <div class="bg-black col-md-6 ">
+            <div class="align-middle text-center pt-2 mt-4" style="padding-right: 4%;">
+                <img class="img-fluid align-middle mt-4 pt-4" src="{{ URL::asset('/images/logo/logo.jpeg') }}" alt="profile Pic" height="500" width="500">
+            </div>
         </div>
-        <div class="col-md-6" style="text-align: -webkit-left; align-self: center; padding-left: 2%">
+        <div class="col-md-6" style="text-align: -webkit-left; align-self: center; padding-left: 12%">
             <div class="{{ $auth_type ?? 'login' }}-box">
 
                 {{-- Logo --}}
