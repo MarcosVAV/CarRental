@@ -8,51 +8,53 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
                 <li class="breadcrumb-item"><a href="/vehicles">Veículos</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Criar ou Editar</li>
+                <li class="breadcrumb-item active" aria-current="page">@if(isset($vehicle)) Editar @else Cadastrar @endif Veículo</li>
             </ol>
         </nav>
     </div>
+    @if (isset($vehicle))
+        {!! Form::model($vehicle, ['route' => ['vehicles.update', $vehicle->id], 'method' => 'PUT']) !!}
+    @else
+        {!! Form::open(['route' => 'vehicles.store', 'method' => 'POST']) !!}
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Criar ou Editar Veículo</h3>
+                        <h3 class="card-title">@if(isset($vehicle)) Editar @else Cadastrar @endif Veículo</h3>
                     </div>
                     <div class="card-body">
-                        @if (isset($vehicle))
-                            {!! Form::model($vehicle, ['route' => ['vehicles.update', $vehicle->id], 'method' => 'PUT']) !!}
-                        @else
-                            {!! Form::open(['route' => 'vehicles.store', 'method' => 'POST']) !!}
-                        @endif
-                        <div class="form-group">
-                            {!! Form::label('model', 'Modelo:') !!}
-                            {!! Form::text('model', isset($vehicle) ? $vehicle['model'] : null , ['class' => 'form-control']) !!}
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-md-6">
+                                {!! Form::label('model', 'Modelo:') !!}
+                                {!! Form::text('model', $vehicle['model'] ?? null , ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-12 col-md-6">
+                                {!! Form::label('brand', 'Marca:') !!}
+                                {!! Form::text('brand', $vehicle['brand'] ?? null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-12 col-md-6">
+                                {!! Form::label('year', 'Ano:') !!}
+                                {!! Form::text('year', $vehicle['year'] ?? null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-12 col-md-6">
+                                {!! Form::label('vehicle_plate', 'Placa:') !!}
+                                {!! Form::text('vehicle_plate', $vehicle['vehicle_plate'] ?? null, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-12 col-md-6">
+                                {!! Form::label('color', 'Cor:') !!}
+                                {!! Form::select('color', ['Vermelho', 'Verde', 'Prata', 'Preto', 'Branco', 'Azul'] , isset($vehicle) ? $vehicle['color'] : null,
+                                    ['class' => 'form-control', 'placeholder' => '-Selecione uma Cor...']) !!}
+                            </div>
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('brand', 'Marca:') !!}
-                            {!! Form::text('brand', isset($vehicle) ? $vehicle['brand'] : null, ['class' => 'form-control']) !!}
+                        <div class="form-group" style="text-align:end">
+                            {!! Form::submit('salvar', ['class' => 'btn btn-primary']) !!}
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('year', 'Ano:') !!}
-                            {!! Form::text('year', isset($vehicle) ? $vehicle['year'] : null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('vehicle_plate', 'Placa:') !!}
-                            {!! Form::text('vehicle_plate', isset($vehicle) ? $vehicle['vehicle_plate'] : null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('color', 'Cor:') !!}
-                            {!! Form::select('color', ['Vermelho', 'Verde', 'Prata', 'Preto', 'Branco', 'Azul'] , isset($vehicle) ? $vehicle['color'] : null, 
-                                ['class' => 'form-control', 'placeholder' => 'Informe a Cor']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-                        </div>
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
-    </div>                        
+    </div>
+    {!! Form::close() !!}
 @endsection

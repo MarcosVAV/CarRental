@@ -18,9 +18,9 @@
                     <div class="card-header">
                         <h3 class="card-title">Clientes</h3>
                         <div class="card-tools">
-                            <a href="{{ route('customers.create') }}" class="btn btn-success">
-                                <i class="fas fa-plus"></i>
-                                Novo Cliente
+                            <a href="{{ route('customers.create') }}" class="btn btn-success" title="Adicionar novo Cliente">
+                                <i class="fas fa-plus-circle"></i>
+                                Adicionar
                             </a>
                         </div>
                     </div>
@@ -62,5 +62,5 @@
                 </div>
             </div>
         </div>
-    </div>      
+    </div>
 @endsection

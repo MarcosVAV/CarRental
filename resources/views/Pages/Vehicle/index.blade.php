@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('Tittle','Veículos')
+@section('Tittle', 'Veículos')
 
 @section('content')
     <div class="container pt-4">
@@ -16,9 +16,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Carros</h3>
+                        <h3 class="card-title">Veículos</h3>
                         <div class="card-tools">
-                            <a href="{{route('vehicles.create')}}" class="btn btn-success">
+                            <a href="{{ route('vehicles.create') }}" class="btn btn-success" title="Adicionar novo veículo">
                                 <i class="fas fa-plus-circle"></i>
                                 Adicionar
                             </a>
@@ -38,20 +38,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($vehicles as $vehicle)
+                                @foreach ($vehicles as $vehicle)
                                     <tr>
-                                        <td class="text-center">{{$vehicle->id}}</td>
-                                        <td class="text-center">{{$vehicle->model}}</td>
-                                        <td class="text-center">{{$vehicle->brand}}</td>
-                                        <td class="text-center">{{$vehicle->color}}</td>
-                                        <td class="text-center">{{$vehicle->year}}</td>
-                                        <td class="text-center">{{$vehicle->vehicle_plate}}</td>
+                                        <td class="text-center">{{ $vehicle->id }}</td>
+                                        <td class="text-center">{{ $vehicle->model }}</td>
+                                        <td class="text-center">{{ $vehicle->brand }}</td>
+                                        <td class="text-center">{{ $vehicle->color }}</td>
+                                        <td class="text-center">{{ $vehicle->year }}</td>
+                                        <td class="text-center">{{ $vehicle->vehicle_plate }}</td>
                                         <td class="text-center">
-                                            <a href="{{route('vehicles.edit',$vehicle->id)}}" class="btn btn-info">
+                                            <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-info">
                                                 <i class="fas fa-edit"></i>
                                                 Editar
                                             </a>
-                                            <form action="{{route('vehicles.destroy',$vehicle->id)}}" method="POST" class="d-inline">
+                                            <form action="{{ route('vehicles.destroy', $vehicle->id) }}" method="POST"
+                                                class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">
