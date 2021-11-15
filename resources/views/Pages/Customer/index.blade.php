@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Clientes</h3>
+                        <h3 class="card-title" style="padding-top: 10px">Clientes</h3>
                         <div class="card-tools">
                             <a href="{{ route('customers.create') }}" class="btn btn-success" title="Adicionar novo Cliente">
                                 <i class="fas fa-plus-circle"></i>
@@ -28,18 +28,22 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th class="text-center">Código</th>
                                     <th>Nome</th>
+                                    <th class="text-center">Cpf</th>
                                     <th>E-mail</th>
-                                    <th>Telefone</th>
+                                    <th class="text-center">Telefone</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($customers as $customer)
                                     <tr>
+                                        <td class="text-center">{{ $customer->id }}</td>
                                         <td>{{ $customer->name }}</td>
+                                        <td class="text-center">{{ $customer->cpf }}</td>
                                         <td>{{ $customer->email }}</td>
-                                        <td>{{ $customer->phone }}</td>
+                                        <td class="text-center">{{ $customer->phone }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-info">
                                                 <i class="fas fa-pencil-alt"></i>

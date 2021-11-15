@@ -257,8 +257,8 @@ return [
             'icon' => 'fas fa-car',
         ],
         [
-            'text' => 'Aluguel',
-            'url' => 'rent-cars',
+            'text' => 'Aluguéis',
+            'url' => 'rent-vehicles',
             'icon' => 'fas fa-hand-holding-usd',
         ],
         // [
