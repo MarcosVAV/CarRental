@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -22,9 +21,9 @@ class CustomerController extends Controller
         return view('Pages.Customer.create-edit');
     }
 
-    public function store(Request $request)
-    {
-        Customer::create($request->all());
+    public function store(StoreCustomerRequest $request)
+    {   
+        Customer::create($request->validated());
 
         return redirect()
             ->route('customers.index')
@@ -36,9 +35,9 @@ class CustomerController extends Controller
         return view('Pages.Customer.create-edit', compact('customer'));
     }
 
-    public function update(Request $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        $customer->update($request->all());
+        $customer->update($request->validated());
 
         return redirect()
             ->route('customers.index')

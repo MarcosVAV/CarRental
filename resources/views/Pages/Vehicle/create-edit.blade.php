@@ -29,26 +29,32 @@
                             <div class="form-group col-sm-12 col-md-6">
                                 {!! Form::label('model', 'Modelo:') !!}
                                 {!! Form::text('model', $vehicle->model ?? null, ['class' => 'form-control']) !!}
+                                <span class="text-danger">{{ $errors->first('model') }}</span>
                             </div>
                             <div class="form-group col-sm-12 col-md-6">
                                 {!! Form::label('brand', 'Marca:') !!}
                                 {!! Form::text('brand', $vehicle->brand ?? null, ['class' => 'form-control']) !!}
+                                <span class="text-danger">{{ $errors->first('brand') }}</span>
                             </div>
                             <div class="form-group col-sm-12 col-md-6">
                                 {!! Form::label('year', 'Ano:') !!}
                                 {!! Form::number('year', $vehicle->year ?? null, ['class' => 'form-control', 'placeholder' => 'Ano do Carro']) !!}
+                                <span class="text-danger">{{ $errors->first('year') }}</span>
                             </div>
                             <div class="form-group col-sm-12 col-md-6">
                                 {!! Form::label('vehicle_plate', 'Placa:') !!}
                                 {!! Form::text('vehicle_plate', $vehicle->vehicle_plate ?? null, ['class' => 'form-control', 'placeholder' => '#######']) !!}
+                                <span class="text-danger">{{ $errors->first('vehicle_plate') }}</span>
                             </div>
                             <div class="form-group col-sm-12 col-md-6">
                                 {!! Form::label('color', 'Cor:') !!}
                                 {!! Form::select('color', ['Vermelho' => 'Vermelho', 'Verde' => 'Verde', 'Prata' => 'Prata', 'Preto' => 'Preto', 'Branco' => 'Branco', 'Azul' => 'Azul'], isset($vehicle) ? $vehicle->color : null, ['class' => 'form-control', 'placeholder' => '-Selecione uma Cor...']) !!}
+                                <span class="text-danger">{{ $errors->first('color') }}</span>
                             </div>
                             <div class="form-group col-sm-12 col-md-6">
                                 {!! Form::label('color', 'Valor:') !!}
-                                {!! Form::number('total_value', null, ['class' => 'form-control', 'placeholder' => 'Valor Total do Carro']) !!}
+                                {!! Form::number('total_value', null, ['class' => 'form-control', 'placeholder' => 'Valor Total do Veículo']) !!}
+                                <span class="text-danger">{{ $errors->first('total_value') }}</span>
                             </div>
                         </div>
                         <div class="form-group" style="text-align:end">

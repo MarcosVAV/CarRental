@@ -22,7 +22,7 @@ class VehicleController extends Controller
         return view('Pages.Vehicle.create-edit');
     }
 
-    public function store(Request $request)
+    public function store(StoreVehicleRequest $request)
     {
         Vehicle::create($request->all());
 
@@ -36,7 +36,7 @@ class VehicleController extends Controller
         return view('Pages.Vehicle.create-edit', compact('vehicle'));
     }
 
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
         $vehicle->update($request->all());
 

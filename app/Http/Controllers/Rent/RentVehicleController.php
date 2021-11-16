@@ -53,12 +53,7 @@ class RentVehicleController extends Controller
             ->route('rent-vehicles.index')
             ->with('success', 'Veículo Salvo!');
     }
-
-    public function show(RentVehicle $rentVehicle)
-    {
-        //
-    }
-
+    
     public function edit(RentVehicle $rentVehicle)
     {
         $rentVehicle->customer_id = $rentVehicle->customer->id;
