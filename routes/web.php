@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Customer\CustomerController;
-use App\Http\Controllers\Rent\RentCars;
+use App\Http\Controllers\Rent\RentVehicleController;
 use App\Http\Controllers\Vehicle\VehicleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,5 +29,5 @@ Route::namespace('\\')
 Route::namespace('\\')
     ->middleware('auth')
     ->group(function () {
-        Route::resource('rent-cars', RentCars::class);
+        Route::resource('rent-vehicles', RentVehicleController::class);
     });

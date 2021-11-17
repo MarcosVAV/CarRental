@@ -15,11 +15,12 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('model');
-            $table->string('brand');
-            $table->string('color');
-            $table->string('year');
+            $table->string('model', 50);
+            $table->string('brand', 50);
+            $table->string('color', 50);
+            $table->integer('year');
             $table->string('vehicle_plate');
+            $table->decimal('total_value', 16, 4);
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class CustomerController extends Controller
     }
 
     public function store(StoreCustomerRequest $request)
-    {
+    {   
         Customer::create($request->validated());
 
         return redirect()

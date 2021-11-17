@@ -17,4 +17,16 @@ class UpdateVehicleRequest extends FormRequest
             'vehicle_plate' => ['required', 'string', 'max:190'],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'model' => 'modelo',
+            'brand' => 'marca',
+            'color' => 'cor',
+            'year' => 'ano',
+            'vehicle_plate' => 'placa',
+            'total_value' => 'valor total',
+        ];
+    }
 }

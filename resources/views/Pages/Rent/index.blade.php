@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('Tittle', 'Veículos')
+@section('Tittle', 'Aluguéis de Veículos')
 
 @section('content')
     <div class="container pt-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a>Veículos</a></li>
+                <li class="breadcrumb-item"><a href=" {{route('home')}} ">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a>Aluguéis de Veículos</a></li>
             </ol>
         </nav>
     </div>
@@ -16,9 +16,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="padding-top: 10px">Veículos</h3>
+                        <h3 class="card-title" style="padding-top: 10px">Aluguéis de Veículos</h3>
                         <div class="card-tools">
-                            <a href="{{ route('vehicles.create') }}" class="btn btn-success" title="Adicionar novo veículo">
+                            <a href="{{ route('rent-vehicles.create') }}" class="btn btn-success" title="Adicionar novo veículo">
                                 <i class="fas fa-plus-circle"></i>
                                 Adicionar
                             </a>
@@ -29,29 +29,29 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">Código</th>
-                                    <th class="text-center">Modelo</th>
-                                    <th class="text-center">Marca</th>
-                                    <th class="text-center">Cor</th>
-                                    <th class="text-center">Ano</th>
+                                    <th class="text-center">Cliente</th>
+                                    <th class="text-center">Carro</th>
                                     <th class="text-center">Placa</th>
+                                    <th class="text-center">Data Início</th>
+                                    <th class="text-center">Data Entrega</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($vehicles as $vehicle)
+                                @foreach ($rentVehicles as $rentVehicle)
                                     <tr>
-                                        <td class="text-center">{{ $vehicle->id }}</td>
-                                        <td class="text-center">{{ $vehicle->model }}</td>
-                                        <td class="text-center">{{ $vehicle->brand }}</td>
-                                        <td class="text-center">{{ $vehicle->color }}</td>
-                                        <td class="text-center">{{ $vehicle->year }}</td>
-                                        <td class="text-center">{{ $vehicle->vehicle_plate }}</td>
+                                        <td class="text-center">{{ $rentVehicle->id }}</td>
+                                        <td class="text-center">{{ $rentVehicle->customerName }}</td>
+                                        <td class="text-center">{{ $rentVehicle->vehicleName }}</td>
+                                        <td class="text-center">{{ $rentVehicle->vehiclePlate }}</td>
+                                        <td class="text-center">{{ $rentVehicle->dateStart }}</td>
+                                        <td class="text-center">{{ $rentVehicle->dateEnd }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-info">
+                                            <a href="{{ route('rent-vehicles.edit', $rentVehicle->id) }}" class="btn btn-info">
                                                 <i class="fas fa-edit"></i>
                                                 Editar
                                             </a>
-                                            <form action="{{ route('vehicles.destroy', $vehicle->id) }}" method="POST"
+                                            <form action="{{ route('rent-vehicles.destroy', $rentVehicle->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -71,3 +71,5 @@
         </div>
     </div>
 @endsection
+
+
